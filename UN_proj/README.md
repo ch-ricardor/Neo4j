@@ -10,3 +10,6 @@ You need to have intalled the Neo4j database.
 
 These rustic cypher commands create simple graph.
 
+<img src="img/Africa.JPG" width="400" alt="Basic Continent Graph">
+
+<img src="img/graph_Base.JPG" width="400" alt="Basic Continent Graph">
