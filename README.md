@@ -1,5 +1,5 @@
 # Neo4j
-Neo4j Graph database examples
+Neo4j Graph database examples. Multiple options to represent the same data.
 
 This directry contains some expmples to create simple data structures in Neo4j Database.
 
