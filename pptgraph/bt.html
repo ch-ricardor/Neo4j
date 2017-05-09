@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Knowledge Search</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="/ads_mods/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/ads_mods/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="/ads_mods/d3/3/d3.min.js" charset="utf-8"></script>
+
+	<link rel="stylesheet" href="/ads_mods/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/ads_mods/vis/4.19.1/vis.min.css">
+	<link rel="stylesheet" href="/ads_mods/popoto/1.1.0/css/popoto.min.css">
+
+    <style>
+        #popoto-graph:fullscreen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #popoto-graph:-webkit-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #popoto-graph:-moz-full-screen {
+            width: 100%;
+            height: 100%;
+        }
+
+        #popoto-graph:-ms-fullscreen {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+
+</head>
+<body class="ppt-body">
+
+	<!-- Page Header Collapsable -->
+	<div id="top-graph" class="container-fluid">
+		<span class="pull-left">
+			<a data-toggle="collapse" data-parent="#top-graph" href="#head-motto">
+				<span class="toggle-icon glyphicon glyphicon-collapse-up"></span>
+			</a>
+		</span>
+
+		<div id="head-motto" class="collapse in">
+			<!-- LOGO -->
+			<header class="ppt-header">
+				<!-- Haeader will be generated here -->
+			</header>
+
+			<!-- HEADER -->
+			<div class="ppt-section-header">
+				<span class="ppt-header-span">Company</span> Knowledge Graph search
+			</div>
+
+		</div>
+	</div>
+
+
+	<section class="ppt-section-main">
+
+		<!-- Query Text -->
+		<div id="head-qry" class="container-fluid">
+			<!-- Glyph to collapse the div -->
+			<span class="pull-left">
+				<a data-toggle="collapse" data-parent="#head-qry" href="#ppt-head-qry">
+					<span class="toggle-icon glyphicon glyphicon-search"></span>
+					<span class="ppt-header-span">Search</span>
+				</a>
+			</span>
+			<div id="ppt-head-qry" class="collapse in">
+				<div id="popoto-query" class="ppt-container-query">
+					<!-- Query viewer will be generated here -->
+				</div>
+			</div>
+		</div>
+		
+		<!-- Main Query Builder -->
+		<div id="mainQuery" class="container-fluid">
+
+			<div class="row">
+				<!-- Glyph to collapse the div -->
+				<span class="pull-left">
+					<a data-toggle="collapse" data-parent="#mainQuery" href="#popoto-qbuilder">
+							<span class="toggle-icon glyphicon glyphicon-eye-open" style="font-size:20px;"></span>
+							<span class="ppt-header-span">Graph Builder</span>
+					</a>
+				</span>
+			</div>
+
+			<div id="popoto-qbuilder" class="ppt-container-graph collapse in">
+				<nav id="popoto-taxonomy" class="ppt-taxo-nav">
+					<!-- Label/taxonomy filter will be generated here -->
+				</nav>
+				<div id="popoto-graph" class="ppt-div-graph">
+					<!-- Graph will be generated here -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			<!-- Show Hide the results Modal -->
+			<div class="row">
+				<span class="pull-left">
+					<a data-toggle="modal" data-parent="#resultsModal" href="#resultsModal">
+						<span class="toggle-icon glyphicon glyphicon-eye-open" style="font-size:20px;"></span>
+						<span class="ppt-header-span">Results</span>
+					</a>
+				</span>
+			</div>
+							
+			<!-- Show Results Modal -->
+			<div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<h4 class="modal-title" id="resultsModalLabel">Records Found</h4>
+						</div>
+						<div class="modal-body">
+
+							<!-- Popoto Records Found -->
+							<div class="ppt-section-header">
+								<!-- The total results count is updated with a listener defined in script -->
+								Results <span id="result-total-count" class="ppt-count"></span>
+							</div>
+							<div id="popoto-results" class="ppt-container-results">
+								<!-- Results will be generated here -->
+							</div>
+							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+						</div>
+					</div>
+				</div>
+			</div>	
+
+		</div> <!-- Results -->
+
+		<!-- Final Graph -->
+		<div id="foot-graph" class="container-fluid">
+
+			<!-- Show Hide the Graph -->
+			<div class="row">
+				<span class="pull-left">
+					<a data-toggle="collapse" data-parent="#foot-graph" href="#theGraph">
+						<span class="toggle-icon glyphicon glyphicon-eye-open" style="font-size:20px;"></span>
+						<span class="ppt-header-span">Graph</span>
+					</a>
+				</span>			
+			</div>
+		
+			<div id="theGraph" class="ppt-div-graph collapse in">
+				<div id="vis_graph" class="ppt-container-graph">
+					<!-- Results visualization will be generated here -->			
+				</div>
+			</div>
+
+		</div>
+		
+	</section>
+
+	
+	<!-- Required scripts -->
+	<script src="/ads_mods/popoto/1.1.0/js/popoto.min.js" charset="utf-8"></script>
+	<script src="/ads_mods/vis/4.19.1/vis.js"></script>
+	<!-- Graph Definition with Network Display -->
+	<script src="/popoto_graph/popoto_link_gph.js" charset="utf-8"></script>
+
+	
+</body>
+</html>
